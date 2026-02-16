@@ -12,4 +12,8 @@ class WebController extends controller
     {
         return view('index');
     }
+    public function catalog()
+    {
+        return view('catalog');
+    }
 }

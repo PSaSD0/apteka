@@ -49,27 +49,86 @@
         </div>
 
         <div class="card" style="width: 18rem;">
-                <img src="assets/img/vitamin c.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Bonbonc Витамин С со вкусом апельсина пастилки для детей с 3 лет 60 шт</h5>
-                    <p class="card-text">759 ₽</p>
-                    <a href="#" class="btn btn-primary">Купить</a>
-                </div>
+            <img src="assets/img/vitamin c.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Bonbonc Витамин С со вкусом апельсина пастилки для детей с 3 лет 60 шт</h5>
+                <p class="card-text">759 ₽</p>
+                <a href="#" class="btn btn-primary">Купить</a>
             </div>
         </div>
 
         <h2>Хиты</h2>
         <div class="card" style="width: 18rem;">
-                <img src="assets/img/vitamin c.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Bonbonc Витамин С со вкусом апельсина пастилки для детей с 3 лет 60 шт</h5>
-                    <p class="card-text">759 ₽</p>
-                    <a href="#" class="btn btn-primary">Купить</a>
-                </div>
+            <img src="assets/img/vitamin c.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Bonbonc Витамин С со вкусом апельсина пастилки для детей с 3 лет 60 шт</h5>
+                <p class="card-text">759 ₽</p>
+                <a href="#" class="btn btn-primary">Купить</a>
             </div>
         </div>
 
-        <button type="button" class="btn btn-primary btn-lg">Все товары</button>
+        <div class="text-center mt-4">
+            <a href="{{ route("catalog") }}" class="btn btn-primary btn-lg">Все товары</a>
+        </div>
+
+        <h2>Статьи</h2>
+        <div class="d-flex flex-row gap-3">
+            <div class=" m-0 mb-5 container p-0" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="assets/img/stat.webp" class="img-fluid rounded" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body p-0 ps-3">
+                            <p class="card-text">5 Способов защиты питомцев от клещей</p>
+                            <p class="card-text"><small class="text-body-secondary">06 Марта 2023</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           <div class=" m-0 mb-5 container p-0" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="assets/img/stat.webp" class="img-fluid rounded" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body p-0 ps-3">
+                            <p class="card-text">5 Способов защиты питомцев от клещей</p>
+                            <p class="card-text"><small class="text-body-secondary">06 Марта 2023</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" m-0 mb-5 container p-0" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="assets/img/stat.webp" class="img-fluid rounded" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body p-0 ps-3">
+                            <p class="card-text">5 Способов защиты питомцев от клещей</p>
+                            <p class="card-text"><small class="text-body-secondary">06 Марта 2023</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" m-0 mb-5 container p-0" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="assets/img/stat.webp" class="img-fluid rounded" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body p-0 ps-3">
+                            <p class="card-text">5 Способов защиты питомцев от клещей</p>
+                            <p class="card-text"><small class="text-body-secondary">06 Марта 2023</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection
