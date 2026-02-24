@@ -22,7 +22,8 @@ class WebController extends controller
     public function product($id)
     {
         $product = DB::table('product')->where('id_product','=',$id)->first();
-        return view('product', compact('product'));
+        $array = DB::table("product")->where('id_product','!=',$id)->inRandomOrder()->limit(3)->get();
+        return view('product', compact('product', 'array'));
     }
     public function profile()
     {

@@ -21,24 +21,22 @@
         </div>
     </form> --}}
 
-     @foreach ($array as $a)
-        <form style="width: auto", action="{{ route( 'product', ['id'=>$a->id_product]) }}">
-            @csrf
-            <div class="container d-grid">
-                <div class="row mb-3 gap-3">
-                    <div class="card" style="width: 18rem;">
-                        <img src="{{ $a->image }}" class="card-img-top" alt="принтер">
-                        <div class="card-body">
-                            <h5 class="card-title fs-3">{{$a->product_name}}</h5>
-                            <p class="card-text fs-5">{{$a->product_description}}</p>
-                            <p class="card-text fs-4">{{$a->price}}$</p>
-                            <button type="submit" class="btn btn-primary fs-5">К товару</button>
-                            {{-- <a href="{{ route('basket', parameters: $a->id_product) }}" class="btn btn-success fs-5">В корзину</a> --}}
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+            @foreach ($array as $a)
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="text-center p-3" style="height: 220px;">
+                            <img src="{{ asset($a->image) }}" class="img-fluid" style="max-height: 100%; width: auto; max-width: 100%; object-fit: contain;">
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">{{ $a->product_name }}</h5>
+                            <p class="card-text">{{ $a->price }} ₽</p>
+                            <a href="{{ route('product', $a->id_product) }}" class="btn btn-primary mt-auto">К товару</a>
                         </div>
                     </div>
-                </form>
-            </div>
+                </div>
+            @endforeach
         </div>
-     @endforeach
-
+    </div>
 @endsection

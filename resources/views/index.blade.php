@@ -1,28 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-    <div id="carouselExampleIndicators" class="carousel slide w-50 p-3">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
+    <div id="carouselExampleAutoplaying" class="carousel carousel-dark slide w-50 p-3" data-bs-ride="carousel">
+        <h1 class="m-5">Новинки</h1>
         <div class="carousel-inner">
-            <div class="carousel-item active">
-            <img src="assets/img/logo.png" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-            <img src="assets/img/logo.png" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-            <img src="assets/img/logo.png" class="d-block w-100" alt="...">
-            </div>
+            @foreach($array as $a)
+                @if($loop->index==0)
+                    <div class="carousel-item active">
+                        <img src="{{ asset($a->image) }}" class="d-block w-10 mx-auto p-2" style="max-height: 300px; width: auto; max-width: 100%; object-fit: contain;">
+                    </div>
+                @else
+                    <div class="carousel-item">
+                        <img src="{{ asset($a->image) }}" class="d-block w-10 mx-auto p-2" style="max-height: 300px; width: auto; max-width: 100%; object-fit: contain;">
+                    </div>
+                @endif
+            @endforeach
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <button class="carousel-control-prev"  type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
@@ -51,7 +49,7 @@
         <div class="card-body">
             <h5 class="card-title">Bonbonc Витамин С со вкусом апельсина пастилки для детей с 3 лет 60 шт</h5>
             <p class="card-text">759 ₽</p>
-            <a href="{{ route("product") }}" class="btn btn-success">Купить</a>
+            {{-- <a href="{{ route('product', parameters: $a->id_product) }}" class="btn btn-success">Купить</a> --}}
         </div>
     </div>
 
