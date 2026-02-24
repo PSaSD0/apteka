@@ -17,3 +17,5 @@ Auth::routes();
 
 Route::get('/', action: [App\Http\Controllers\WebController::class, 'index'])->name('index');
 Route::get('/catalog', [App\Http\Controllers\WebController::class, 'catalog'])->name('catalog');
+Route::get('/product', [App\Http\Controllers\WebController::class, 'product'])->name('product');
+Route::get('/lk', [App\Http\Controllers\WebController::class, 'lk'])->name('lk');

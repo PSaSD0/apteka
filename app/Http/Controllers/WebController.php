@@ -16,4 +16,12 @@ class WebController extends controller
     {
         return view('catalog');
     }
+    public function product()
+    {
+        return view('product');
+    }
+    public function lk()
+    {
+        return view('lk');
+    }
 }
