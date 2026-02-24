@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\WebController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +14,17 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', action: [App\Http\Controllers\WebController::class, 'home'])->name('index');
+
 Auth::routes();
 
-Route::get('/', action: [App\Http\Controllers\WebController::class, 'index'])->name('index');
+Route::get('/home', action: [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/catalog', [App\Http\Controllers\WebController::class, 'catalog'])->name('catalog');
-Route::get('/product', [App\Http\Controllers\WebController::class, 'product'])->name('product');
-Route::get('/lk', [App\Http\Controllers\WebController::class, 'lk'])->name('lk');
+Route::get('/product/{id}', [App\Http\Controllers\WebController::class, 'product'])->name('product');
+Route::get('/profile', [App\Http\Controllers\WebController::class, 'profile'])->name('profile')->middleware('auth');
+Route::get('/admin', [App\Http\Controllers\WebController::class, 'admin'])->name('admin')->middleware('auth')->middleware('check.admin');
+
+Route::post('/addCategory', [App\Http\Controllers\WebController::class, 'addCategory'])->name('addCategory');
+Route::delete('/dellCategory', [App\Http\Controllers\WebController::class, 'dellCategory'])->name('dellCategory');
+
+Route::post('/addProduct', [App\Http\Controllers\WebController::class, 'addProduct'])->name('addProduct');

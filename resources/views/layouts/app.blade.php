@@ -107,9 +107,13 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('lk') }}">
+                                    <a class="dropdown-item" href="{{ route('profile') }}">
                                         Личный кабинет
                                     </a>
+
+                                    @if(Auth::user()->id_role == 2)
+                                        <a class="dropdown-item" href="{{ route('admin') }}">Админ панель</a>
+                                    @endif
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

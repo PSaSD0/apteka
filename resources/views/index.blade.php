@@ -55,6 +55,10 @@
         </div>
     </div>
 
+    <div class="d-flex justify-content-center mt-4">
+        <a href="{{ route("catalog") }}" class="btn btn-success">Все товары</a>
+    </div>
+
     <h2>Статьи</h2>
     <div class="d-flex flex-row gap-3">
         <div class=" m-0 mb-5 container p-0" style="max-width: 540px;">
