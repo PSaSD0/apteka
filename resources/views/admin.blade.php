@@ -41,14 +41,16 @@
     </form>
 
     <h2 class="m-5 mb-0">Добавить категорию</h2>
-    <form action="{{ route('addCategory') }}" method="post">
+    <form action="{{ route('addCategory') }}" method="post" >
         @csrf
         <div class="card p-2 m-5">
             <div class="card-body">
                 <label for="nameCategory" class="form-label">Название категории</label>
                 <input type="text" class="form-control" id="nameCategory" name="nameCategory" required>
             </div>
-            <button type="submit" class="btn btn-primary">Добавить</button>
+            <div class="ms-3 mt-0">
+                <button type="submit" class="btn btn-success">Добавить</button>
+            </div>
             <p>{{ session('messageAddCategory') }}</p>
         </div>
     </form>

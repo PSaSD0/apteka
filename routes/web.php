@@ -30,12 +30,12 @@ Route::get('/admin', [App\Http\Controllers\WebController::class, 'admin'])->name
 Route::get('/editProductView/{id}', [App\Http\Controllers\WebController::class, 'editProductView'])->name('editProductView')->middleware('auth')->middleware('check.admin');
 Route::post('/editProduct/{id}', [App\Http\Controllers\WebController::class, 'editProduct'])->name('editProduct')->middleware('auth')->middleware('check.admin');
 
-Route::post('/addCategory', [App\Http\Controllers\WebController::class, 'addCategory'])->name('addCategory');
-Route::delete('/dellCategory', [App\Http\Controllers\WebController::class, 'dellCategory'])->name('dellCategory');
+Route::post('/addCategory', [App\Http\Controllers\WebController::class, 'addCategory'])->name('addCategory')->middleware('auth')->middleware('check.admin');
+Route::delete('/dellCategory', [App\Http\Controllers\WebController::class, 'dellCategory'])->name('dellCategory')->middleware('auth')->middleware('check.admin');
 
-Route::post('/addProduct', [App\Http\Controllers\WebController::class, 'addProduct'])->name('addProduct');
-Route::delete('/dellProduct', [App\Http\Controllers\WebController::class, 'dellProduct'])->name('dellProduct');
+Route::post('/addProduct', [App\Http\Controllers\WebController::class, 'addProduct'])->name('addProduct')->middleware('auth')->middleware('check.admin');
+Route::delete('/dellProduct', [App\Http\Controllers\WebController::class, 'dellProduct'])->name('dellProduct')->middleware('auth')->middleware('check.admin');
 
 
-Route::post('/addArticles', [App\Http\Controllers\WebController::class, 'addArticles'])->name('addArticles');
-Route::delete('/dellArticles', [App\Http\Controllers\WebController::class, 'dellArticles'])->name('dellArticles');
+Route::post('/addArticles', [App\Http\Controllers\WebController::class, 'addArticles'])->name('addArticles')->middleware('auth')->middleware('check.admin');
+Route::delete('/dellArticles', [App\Http\Controllers\WebController::class, 'dellArticles'])->name('dellArticles')->middleware('auth')->middleware('check.admin');

@@ -158,6 +158,142 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        // Основные поля
+        'name' => 'имя',
+        'surname' => 'фамилия',
+        'patronymic' => 'отчество',
+        'last_name' => 'фамилия',
+        'first_name' => 'имя',
+        'middle_name' => 'отчество',
+        'email' => 'email',
+        'password' => 'пароль',
+        'password_confirmation' => 'подтверждение пароля',
+        'current_password' => 'текущий пароль',
+        'new_password' => 'новый пароль',
+        'old_password' => 'старый пароль',
 
+        // Пользователь
+        'username' => 'имя пользователя',
+        'login' => 'логин',
+        'nickname' => 'никнейм',
+        'avatar' => 'аватар',
+        'photo' => 'фото',
+        'image' => 'изображение',
+        'picture' => 'картинка',
+        'birthday' => 'дата рождения',
+        'birthdate' => 'дата рождения',
+        'age' => 'возраст',
+        'gender' => 'пол',
+        'phone' => 'телефон',
+        'mobile' => 'мобильный телефон',
+        'address' => 'адрес',
+        'city' => 'город',
+        'country' => 'страна',
+        'region' => 'регион',
+        'zip' => 'почтовый индекс',
+        'postal_code' => 'почтовый индекс',
+
+        // Товары
+        'product_name' => 'название товара',
+        'product_description' => 'описание товара',
+        'product_producer' => 'производитель',
+        'product_active_substance' => 'действующее вещество',
+        'product_expiration_date' => 'срок годности',
+        'price' => 'цена',
+        'cost' => 'стоимость',
+        'quantity' => 'количество',
+        'stock' => 'наличие',
+        'category' => 'категория',
+        'category_id' => 'id категории',
+        'id_category' => 'категория',
+
+        // Категории
+        'category_name' => 'название категории',
+        'category_description' => 'описание категории',
+
+        // Статьи
+        'articles_name' => 'название статьи',
+        'articles_description' => 'описание статьи',
+        'article_title' => 'заголовок статьи',
+        'article_content' => 'содержание статьи',
+
+        // Заказы
+        'order_id' => 'номер заказа',
+        'order_date' => 'дата заказа',
+        'order_status' => 'статус заказа',
+        'delivery_address' => 'адрес доставки',
+        'payment_method' => 'способ оплаты',
+        'total_amount' => 'общая сумма',
+
+        // Корзина
+        'basket_id' => 'id корзины',
+        'id_product' => 'id товара',
+        'id_user' => 'id пользователя',
+
+        // Комментарии и отзывы
+        'comment' => 'комментарий',
+        'review' => 'отзыв',
+        'rating' => 'рейтинг',
+        'feedback' => 'обратная связь',
+
+        // Даты и время
+        'created_at' => 'дата создания',
+        'updated_at' => 'дата обновления',
+        'deleted_at' => 'дата удаления',
+        'date' => 'дата',
+        'time' => 'время',
+
+        // Файлы
+        'file' => 'файл',
+        'document' => 'документ',
+        'upload' => 'загрузка',
+
+        // Поиск и фильтры
+        'search' => 'поиск',
+        'filter' => 'фильтр',
+        'sort' => 'сортировка',
+
+        // Разное
+        'title' => 'заголовок',
+        'description' => 'описание',
+        'content' => 'содержание',
+        'text' => 'текст',
+        'message' => 'сообщение',
+        'subject' => 'тема',
+        'body' => 'тело сообщения',
+        'status' => 'статус',
+        'type' => 'тип',
+        'code' => 'код',
+        'slug' => 'url-псевдоним',
+        'url' => 'url',
+        'link' => 'ссылка',
+
+        // Поля для форм авторизации и регистрации
+        'remember' => 'запомнить меня',
+        'agree' => 'согласие',
+        'terms' => 'условия использования',
+        'privacy' => 'политика конфиденциальности',
+        'captcha' => 'капча',
+        'verification_code' => 'код подтверждения',
+
+        // Поля для профиля
+        'about' => 'о себе',
+        'bio' => 'биография',
+        'website' => 'веб-сайт',
+        'social_network' => 'социальная сеть',
+        'telegram' => 'telegram',
+        'whatsapp' => 'whatsapp',
+        'viber' => 'viber',
+
+        // Поля для администратора
+        'role' => 'роль',
+        'id_role' => 'роль',
+        'permission' => 'разрешение',
+        'access' => 'доступ',
+        'is_admin' => 'администратор',
+        'is_active' => 'активен',
+        'is_blocked' => 'заблокирован',
+        'blocked_at' => 'дата блокировки',
+    ],
 ];
