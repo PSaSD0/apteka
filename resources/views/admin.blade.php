@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="m-5">Добавить товар:</h1>
+    <h1 class="m-5">Добавить товар</h1>
     <form action="{{ route('addProduct') }}" method="post" enctype="multipart/form-data">
         @csrf
-        <div class="card p-2 m-5" style="width: 18rem;">
+        <div class="card p-2 m-5">
             <div class="card-body">
                 <label class="form-label" for="image">Добавить фото</label>
                 <input class="form-control" type="file" id="image" name="image" required accept="image/*">
@@ -20,7 +20,7 @@
                 <input class="form-control" type="text" id="nameProduct" name="nameProduct" required>
 
                 <label class="form-label mt-3" for="descriptionProduct">Описание товара</label>
-                <input class="form-control" type="text" id="descriptionProduct" name="descriptionProduct" required>
+                <textarea class="form-control" rows="5" type="text" id="descriptionProduct" name="descriptionProduct" required></textarea>
 
                 <label class="form-label mt-3" for="productExpirationDate">Срок годности</label>
                 <input class="form-control" type="text" id="productExpirationDate" name="productExpirationDate" required>
@@ -40,10 +40,10 @@
         </div>
     </form>
 
-    <h1 class="m-5">Добавить категорию:</h1>
+    <h1 class="m-5">Добавить категорию</h1>
     <form action="{{ route('addCategory') }}" method="post">
         @csrf
-        <div class="card p-2 m-5" style="width: 18rem;">
+        <div class="card p-2 m-5">
             <div class="card-body">
                 <label for="nameCategory" class="form-label">Название категории</label>
                 <input type="text" class="form-control" id="nameCategory" name="nameCategory" required>
@@ -53,11 +53,11 @@
         </div>
     </form>
 
-    <h1 class="m-5">Удалить категорию:</h1>
+    <h1 class="m-5">Удалить категорию</h1>
     <form action="{{ route('dellCategory') }}" method="post">
         @csrf
         @method('DELETE')
-        <div class="card p-2 m-5" style="width: 18rem;">
+        <div class="card p-2 m-5">
             <div class="card-body">
                 <select class="form-select" name="id_category">
                     @foreach ($categories as $a)
@@ -66,6 +66,43 @@
                 </select>
                 <button type="submit" class="btn btn-danger mt-3">Удалить</button>
                 <p>{{ session('messageDellCategory') }}</p>
+            </div>
+        </div>
+    </form>
+
+    <h1 class="m-5">Добавить статью</h1>
+    <form action="{{ route('addArticles') }}" method="post" enctype="multipart/form-data">
+        @csrf
+        <div class="card p-2 m-5" >
+            <div class="card-body">
+                <label class="form-label" for="image">Добавить фото</label>
+                <input class="form-control" type="file" id="image" name="image" required accept="image/*">
+
+                <label class="form-label mt-3" for="nameArticles">Название статьи</label>
+                <input class="form-control" type="text" id="nameArticles" name="nameArticles" required>
+
+                <label class="form-label mt-3" for="descriptionArticles">Описание статьи</label>
+                <textarea class="form-control" rows="5" type="text" id="descriptionArticles" name="descriptionArticles" required></textarea>
+
+                <button type="submit" class="btn btn-primary mt-3">Добавить</button>
+                <p>{{ session('messageAddArticles') }}</p>
+            </div>
+        </div>
+    </form>
+
+    <h1 class="m-5">Удалить статью</h1>
+    <form action="{{ route('dellArticles') }}" method="post">
+        @csrf
+        @method('DELETE')
+        <div class="card p-2 m-5">
+            <div class="card-body">
+                <select class="form-select" name="id_articles">
+                    @foreach ($articles as $a)
+                        <option value="{{ $a->id_articles }}">{{ $a->articles_name }}</option>
+                    @endforeach
+                </select>
+                <button type="submit" class="btn btn-danger mt-3">Удалить</button>
+                <p>{{ session('messageDellArticles') }}</p>
             </div>
         </div>
     </form>

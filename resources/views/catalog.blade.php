@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="m-5">Каталог</h1>
+    <h2 class="m-5">Каталог</h2>
     {{-- <form action="{{ route('catalog') }}" method="get">
         @csrf
         <div class="d-flex justify-content-start">
@@ -29,10 +29,11 @@
                         <div class="text-center p-3" style="height: 220px;">
                             <img src="{{ asset($a->image) }}" class="img-fluid" style="max-height: 100%; width: auto; max-width: 100%; object-fit: contain;">
                         </div>
-                        <div class="card-body d-flex flex-column">
+                        <div class="card-body ">
                             <h5 class="card-title">{{ $a->product_name }}</h5>
                             <p class="card-text">{{ $a->price }} ₽</p>
-                            <a href="{{ route('product', $a->id_product) }}" class="btn btn-primary mt-auto">К товару</a>
+                            <a href="{{ route('product', $a->id_product) }}" class="btn btn-outline-primary btn-sm">Подробнее</a>
+                            <a href="{{ route('basket',  $a->id_product) }}" class="btn btn-success btn-sm">В корзину</a>
                         </div>
                     </div>
                 </div>

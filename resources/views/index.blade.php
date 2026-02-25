@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+    <h2 class="m-5">Новинки</h2>
     <div id="carouselExampleAutoplaying" class="carousel carousel-dark slide w-50 p-3" data-bs-ride="carousel">
-        <h1 class="m-5">Новинки</h1>
         <div class="carousel-inner">
             @foreach($array as $a)
                 @if($loop->index==0)
@@ -26,31 +26,96 @@
         </button>
     </div>
 
-    <h2>Спецпредложения</h2>
-    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
-        <label class="btn btn-outline-success" for="btnradio1">Популярные товары</label>
-
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
-        <label class="btn btn-outline-success" for="btnradio2">Набором дешевле</label>
-
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-        <label class="btn btn-outline-success" for="btnradio3">Скидки</label>
-
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
-        <label class="btn btn-outline-success" for="btnradio4">До -50%</label>
-
-        <input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off">
-        <label class="btn btn-outline-success" for="btnradio5">Новинки</label>
+    <h2 class="mt-4">Популярные товары</h2>
+    <div class="row row-cols-1 row-cols-md-3">
+        @foreach($productPopylar as $a)
+            <div class="col">
+                <div class="card h-100">
+                    <div class="row g-0 h-100">
+                        <div class="col-md-4 d-flex align-items-center p-2">
+                            <img src="{{ asset($a->image) }}" class="img-fluid" style="max-height: 100%; width: auto; max-width: 100%; object-fit: contain;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <p class="card-title fw-bold">{{ $a->product_name }}</p>
+                                <p class="card-text">{{ $a->price }} ₽</p>
+                                <a href="{{ route('product', $a->id_product) }}" class="btn btn-outline-primary btn-sm">Подробнее</a>
+                                <a href="" class="btn btn-success btn-sm">В корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
     </div>
 
-    <div class="card mt-4" style="width: 18rem;">
-        <img src="assets/img/vitamin c.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Bonbonc Витамин С со вкусом апельсина пастилки для детей с 3 лет 60 шт</h5>
-            <p class="card-text">759 ₽</p>
-            {{-- <a href="{{ route('product', parameters: $a->id_product) }}" class="btn btn-success">Купить</a> --}}
-        </div>
+    <h2 class="mt-4">Товары дня</h2>
+    <div class="row row-cols-1 row-cols-md-3">
+        @foreach($productDay as $a)
+            <div class="col">
+                <div class="card h-100">
+                    <div class="row g-0 h-100">
+                        <div class="col-md-4 d-flex align-items-center p-2">
+                            <img src="{{ asset($a->image) }}" class="img-fluid" style="max-height: 100%; width: auto; max-width: 100%; object-fit: contain;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <p class="card-title fw-bold">{{ $a->product_name }}</p>
+                                <p class="card-text">{{ $a->price }} ₽</p>
+                                <a href="{{ route('product', $a->id_product) }}" class="btn btn-outline-primary btn-sm">Подробнее</a>
+                                <a href="" class="btn btn-success btn-sm">В корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+
+    <h2 class="mt-4">Специально для вас</h2>
+    <div class="row row-cols-1 row-cols-md-3">
+        @foreach($productSpecial as $a)
+            <div class="col">
+                <div class="card h-100">
+                    <div class="row g-0 h-100">
+                        <div class="col-md-4 d-flex align-items-center p-2">
+                            <img src="{{ asset($a->image) }}" class="img-fluid" style="max-height: 100%; width: auto; max-width: 100%; object-fit: contain;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <p class="card-title fw-bold">{{ $a->product_name }}</p>
+                                <p class="card-text">{{ $a->price }} ₽</p>
+                                <a href="{{ route('product', $a->id_product) }}" class="btn btn-outline-primary btn-sm">Подробнее</a>
+                                <a href="" class="btn btn-success btn-sm">В корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+
+    <h2 class="mt-4">Новинки</h2>
+    <div class="row row-cols-1 row-cols-md-3">
+        @foreach($productNew as $a)
+            <div class="col">
+                <div class="card h-100">
+                    <div class="row g-0 h-100">
+                        <div class="col-md-4 d-flex align-items-center p-2">
+                            <img src="{{ asset($a->image) }}" class="img-fluid" style="max-height: 100%; width: auto; max-width: 100%; object-fit: contain;">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <p class="card-title fw-bold">{{ $a->product_name }}</p>
+                                <p class="card-text">{{ $a->price }} ₽</p>
+                                <a href="{{ route('product', $a->id_product) }}" class="btn btn-outline-primary btn-sm">Подробнее</a>
+                                <a href="" class="btn btn-success btn-sm">В корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
     </div>
 
     <div class="d-flex justify-content-center mt-4">
@@ -58,61 +123,29 @@
     </div>
 
     <h2>Статьи</h2>
-    <div class="d-flex flex-row gap-3">
-        <div class=" m-0 mb-5 container p-0" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="assets/img/stat.webp" class="img-fluid rounded" alt="...">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body p-0 ps-3">
-                        <p class="card-text">5 Способов защиты питомцев от клещей</p>
-                        <p class="card-text"><small class="text-body-secondary">06 Марта 2023</small></p>
+    <div class="row row-cols-1 row-cols-md-3">
+        @foreach ($articles as $a)
+            <div class="col">
+                <a class="text-decoration-none" href="{{ route('articlesOne', $a->id_articles) }}">
+                    <div class="card h-100">
+                        <div class="row g-0 h-100">
+                            <div class="col-md-4 d-flex align-items-center p-2">
+                                <img src="{{ asset($a->image) }}" class="img-fluid rounded-3" style="max-height: 100%; width: auto; max-width: 100%; object-fit: contain;">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <p class="card-title fw-bold text-dark">{{ $a->articles_name }}</p>
+                                    <p class="card-text text-dark"><small class="text-body-secondary">{{ $a->created_at }}</small></p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
-        </div>
+        @endforeach
+    </div>
 
-        <div class=" m-0 mb-5 container p-0" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="assets/img/stat.webp" class="img-fluid rounded" alt="...">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body p-0 ps-3">
-                        <p class="card-text">5 Способов защиты питомцев от клещей</p>
-                        <p class="card-text"><small class="text-body-secondary">06 Марта 2023</small></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class=" m-0 mb-5 container p-0" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="assets/img/stat.webp" class="img-fluid rounded" alt="...">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body p-0 ps-3">
-                        <p class="card-text">5 Способов защиты питомцев от клещей</p>
-                        <p class="card-text"><small class="text-body-secondary">06 Марта 2023</small></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class=" m-0 mb-5 container p-0" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="assets/img/stat.webp" class="img-fluid rounded" alt="...">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body p-0 ps-3">
-                        <p class="card-text">5 Способов защиты питомцев от клещей</p>
-                        <p class="card-text"><small class="text-body-secondary">06 Марта 2023</small></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="d-flex justify-content-center mt-4">
+        <a href="{{ route("articles") }}" class="btn btn-success">Все статьи</a>
     </div>
 @endsection

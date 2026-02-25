@@ -6,13 +6,29 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class WebController extends controller
 {
    public function home()
     {
-        $array = DB::table("product")->limit(5)->get();
-        return view('index', data: compact('array'));
+        $array = DB::table("product")->orderBy('id_product', 'desc')->limit(5)->get();
+        $productPopylar = DB::table( "product")->inRandomOrder()->limit(3)->get();
+        $productNew = DB::table( "product")->orderBy('id_product', 'desc')->limit(3)->get();
+        $productDay = DB::table( "product")->inRandomOrder()->orderBy('price', 'asc')->limit(3)->get();
+        $productSpecial = DB::table( "product")->inRandomOrder()->orderBy('price', 'desc')->limit(3)->get();
+        $articles = DB::table('articles')->limit(3)->get();
+        return view('index', data: compact('array', 'productPopylar', 'productNew', 'productDay', 'productSpecial', 'articles'));
+    }
+    public function articles()
+    {
+        $array = DB::table('articles')->get();
+        return view('articles', compact('array'));
+    }
+    public function articlesOne($id)
+    {
+        $array = DB::table('articles')->where('id_articles','=',$id)->first();
+        return view('articlesOne', compact('array'));
     }
     public function catalog()
     {
@@ -22,8 +38,13 @@ class WebController extends controller
     public function product($id)
     {
         $product = DB::table('product')->where('id_product','=',$id)->first();
-        $array = DB::table("product")->where('id_product','!=',$id)->inRandomOrder()->limit(3)->get();
+        $array = DB::table(table: "product")->where('id_product','!=',$id)->inRandomOrder()->limit(3)->get();
         return view('product', compact('product', 'array'));
+    }
+    public function basket($id)
+    {
+        $basket = DB::table('product')->where('id_product', '=', $id)->first();
+        return view('basket', compact('basket'));
     }
     public function profile()
     {
@@ -32,7 +53,8 @@ class WebController extends controller
     public function admin()
     {
         $categories = DB::table('category')->get();
-        return view('admin', compact('categories'));
+        $articles = DB::table('articles')->get();
+        return view('admin', compact('categories', 'articles'));
     }
     public function addCategory(Request $request)
     {
@@ -61,5 +83,24 @@ class WebController extends controller
         ]);
 
         return redirect()->back()->with('messageAddProduct', 'Товар успешно добавлен');
+    }
+    public function addArticles(Request $request)
+    {
+        $path = $request->file('image')->store('assets/img', 'public');
+        $request->file('image')->move(public_path('assets/img/'), $path);
+
+        DB::table('articles')->insert([
+            'articles_name' => $request->nameArticles,
+            'articles_description' => $request->descriptionArticles,
+            'image' => $path,
+            'created_at' => Carbon::now(),
+        ]);
+
+        return redirect()->back()->with('messageAddArticles', 'Статья успешно добавлена');
+    }
+    public function dellArticles(Request $request)
+    {
+        DB::table('articles')->where('id_articles','=',value: $request->id_articles)->delete();
+        return redirect()->back()->with('messageDellArticles', 'Статья успешно удалена');
     }
 }

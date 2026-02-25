@@ -19,8 +19,11 @@ Route::get('/', action: [App\Http\Controllers\WebController::class, 'home'])->na
 Auth::routes();
 
 Route::get('/home', action: [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/articles', action: [App\Http\Controllers\WebController::class, 'articles'])->name('articles');
+Route::get('/articles/read/{id}', action: [App\Http\Controllers\WebController::class, 'articlesOne'])->name('articlesOne');
 Route::get('/catalog', [App\Http\Controllers\WebController::class, 'catalog'])->name('catalog');
 Route::get('/product/{id}', [App\Http\Controllers\WebController::class, 'product'])->name('product');
+Route::get('/basket/{id}', action: [App\Http\Controllers\WebController::class, 'basket'])->name('basket');
 Route::get('/profile', [App\Http\Controllers\WebController::class, 'profile'])->name('profile')->middleware('auth');
 Route::get('/admin', [App\Http\Controllers\WebController::class, 'admin'])->name('admin')->middleware('auth')->middleware('check.admin');
 
@@ -28,3 +31,6 @@ Route::post('/addCategory', [App\Http\Controllers\WebController::class, 'addCate
 Route::delete('/dellCategory', [App\Http\Controllers\WebController::class, 'dellCategory'])->name('dellCategory');
 
 Route::post('/addProduct', [App\Http\Controllers\WebController::class, 'addProduct'])->name('addProduct');
+
+Route::post('/addArticles', [App\Http\Controllers\WebController::class, 'addArticles'])->name('addArticles');
+Route::delete('/dellArticles', [App\Http\Controllers\WebController::class, 'dellArticles'])->name('dellArticles');
