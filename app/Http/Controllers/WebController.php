@@ -58,8 +58,30 @@ class WebController extends controller
     }
     public function basket($id)
     {
-        $basket = DB::table('product')->where('id_product', '=', $id)->first();
+        $basket = DB::table('product')->where('id_product', $id)->first();
         return view('basket', compact('basket'));
+    }
+    public function order(Request $request)
+    {
+        $product = DB::table('product')->where('id_product', $request->id_product)->first();
+        $total = $product->price * $request->quantity;
+
+        DB::table('order')->insert([
+            'id_status' => 1,
+            'order_sum' => $total,
+            'id_user' => Auth::user()->id_user,
+            'created_at' => Carbon::now(),
+            'update_at' => Carbon::now(),
+        ]);
+
+        return view('order', [
+            'name' => $request->name,
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'product' => $product->product_name,
+            'quantity' => $request->quantity,
+            'total' => $total,
+        ]);
     }
     public function profile()
     {

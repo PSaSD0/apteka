@@ -23,7 +23,8 @@ Route::get('/articles', action: [App\Http\Controllers\WebController::class, 'art
 Route::get('/articles/read/{id}', action: [App\Http\Controllers\WebController::class, 'articlesOne'])->name('articlesOne');
 Route::get('/catalog', action: [App\Http\Controllers\WebController::class, 'catalog'])->name('catalog');
 Route::get('/product/{id}', [App\Http\Controllers\WebController::class, 'product'])->name('product');
-Route::get('/basket/{id}', action: [App\Http\Controllers\WebController::class, 'basket'])->name('basket')->middleware('auth');
+Route::get('/basket/{id}', [App\Http\Controllers\WebController::class, 'basket'])->name('basket')->middleware('auth');
+Route::post('/order', [App\Http\Controllers\WebController::class, 'order'])->name('order')->middleware('auth');
 Route::get('/profile', [App\Http\Controllers\WebController::class, 'profile'])->name('profile')->middleware('auth');
 Route::get('/admin', [App\Http\Controllers\WebController::class, 'admin'])->name('admin')->middleware('auth')->middleware('check.admin');
 

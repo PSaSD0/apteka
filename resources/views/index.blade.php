@@ -40,7 +40,7 @@
                                 <p class="card-title fw-bold">{{ $a->product_name }}</p>
                                 <p class="card-text">{{ $a->price }} ₽</p>
                                 <a href="{{ route('product', $a->id_product) }}" class="btn btn-outline-primary btn-sm">Подробнее</a>
-                                <a href="" class="btn btn-success btn-sm">В корзину</a>
+                                <a href="{{ route('basket', $a->id_product) }}" class="btn btn-success btn-sm">В корзину</a>
                                 @auth
                                     @if(Auth::user()->id_role == 2)
                                         <a href="{{ route('editProductView',['id'=>$a->id_product]) }}" class="btn btn-outline-primary btn-sm">Редактировать товар</a>
@@ -75,7 +75,7 @@
                                 <p class="card-title fw-bold">{{ $a->product_name }}</p>
                                 <p class="card-text">{{ $a->price }} ₽</p>
                                 <a href="{{ route('product', $a->id_product) }}" class="btn btn-outline-primary btn-sm">Подробнее</a>
-                                <a href="" class="btn btn-success btn-sm">В корзину</a>
+                                <a href="{{ route('basket', $a->id_product) }}" class="btn btn-success btn-sm">В корзину</a>
                                 @auth
                                     @if(Auth::user()->id_role == 2)
                                         <a href="{{ route('editProductView',['id'=>$a->id_product]) }}" class="btn btn-outline-primary btn-sm">Редактировать товар</a>
@@ -110,7 +110,7 @@
                                 <p class="card-title fw-bold">{{ $a->product_name }}</p>
                                 <p class="card-text">{{ $a->price }} ₽</p>
                                 <a href="{{ route('product', $a->id_product) }}" class="btn btn-outline-primary btn-sm">Подробнее</a>
-                                <a href="" class="btn btn-success btn-sm">В корзину</a>
+                                <a href="{{ route('basket', $a->id_product) }}" class="btn btn-success btn-sm">В корзину</a>
                                 @auth
                                     @if(Auth::user()->id_role == 2)
                                         <a href="{{ route('editProductView',['id'=>$a->id_product]) }}" class="btn btn-outline-primary btn-sm">Редактировать товар</a>
@@ -145,7 +145,7 @@
                                 <p class="card-title fw-bold">{{ $a->product_name }}</p>
                                 <p class="card-text">{{ $a->price }} ₽</p>
                                 <a href="{{ route('product', $a->id_product) }}" class="btn btn-outline-primary btn-sm">Подробнее</a>
-                                <a href="" class="btn btn-success btn-sm">В корзину</a>
+                                <a href="{{ route('basket', $a->id_product) }}" class="btn btn-success btn-sm">В корзину</a>
                                 @auth
                                     @if(Auth::user()->id_role == 2)
                                         <a href="{{ route('editProductView',['id'=>$a->id_product]) }}" class="btn btn-outline-primary btn-sm">Редактировать товар</a>
