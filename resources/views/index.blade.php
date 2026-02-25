@@ -41,6 +41,18 @@
                                 <p class="card-text">{{ $a->price }} ₽</p>
                                 <a href="{{ route('product', $a->id_product) }}" class="btn btn-outline-primary btn-sm">Подробнее</a>
                                 <a href="" class="btn btn-success btn-sm">В корзину</a>
+                                @auth
+                                    @if(Auth::user()->id_role == 2)
+                                        <a href="{{ route('editProductView',['id'=>$a->id_product]) }}" class="btn btn-outline-primary btn-sm">Редактировать товар</a>
+
+                                        <form action="{{ route('dellProduct') }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input type="hidden" name="id_product" value="{{ $a->id_product }}">
+                                            <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
+                                        </form>
+                                    @endif
+                                @endauth
                             </div>
                         </div>
                     </div>
@@ -64,6 +76,18 @@
                                 <p class="card-text">{{ $a->price }} ₽</p>
                                 <a href="{{ route('product', $a->id_product) }}" class="btn btn-outline-primary btn-sm">Подробнее</a>
                                 <a href="" class="btn btn-success btn-sm">В корзину</a>
+                                @auth
+                                    @if(Auth::user()->id_role == 2)
+                                        <a href="{{ route('editProductView',['id'=>$a->id_product]) }}" class="btn btn-outline-primary btn-sm">Редактировать товар</a>
+
+                                        <form action="{{ route('dellProduct') }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input type="hidden" name="id_product" value="{{ $a->id_product }}">
+                                            <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
+                                        </form>
+                                    @endif
+                                @endauth
                             </div>
                         </div>
                     </div>
@@ -87,6 +111,18 @@
                                 <p class="card-text">{{ $a->price }} ₽</p>
                                 <a href="{{ route('product', $a->id_product) }}" class="btn btn-outline-primary btn-sm">Подробнее</a>
                                 <a href="" class="btn btn-success btn-sm">В корзину</a>
+                                @auth
+                                    @if(Auth::user()->id_role == 2)
+                                        <a href="{{ route('editProductView',['id'=>$a->id_product]) }}" class="btn btn-outline-primary btn-sm">Редактировать товар</a>
+
+                                        <form action="{{ route('dellProduct') }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input type="hidden" name="id_product" value="{{ $a->id_product }}">
+                                            <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
+                                        </form>
+                                    @endif
+                                @endauth
                             </div>
                         </div>
                     </div>
@@ -110,6 +146,18 @@
                                 <p class="card-text">{{ $a->price }} ₽</p>
                                 <a href="{{ route('product', $a->id_product) }}" class="btn btn-outline-primary btn-sm">Подробнее</a>
                                 <a href="" class="btn btn-success btn-sm">В корзину</a>
+                                @auth
+                                    @if(Auth::user()->id_role == 2)
+                                        <a href="{{ route('editProductView',['id'=>$a->id_product]) }}" class="btn btn-outline-primary btn-sm">Редактировать товар</a>
+
+                                        <form action="{{ route('dellProduct') }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input type="hidden" name="id_product" value="{{ $a->id_product }}">
+                                            <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
+                                        </form>
+                                    @endif
+                                @endauth
                             </div>
                         </div>
                     </div>

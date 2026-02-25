@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="m-5">Добавить товар</h1>
+    <h2 class="m-5 mb-0">Добавить товар</h2>
     <form action="{{ route('addProduct') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="card p-2 m-5">
@@ -40,7 +40,7 @@
         </div>
     </form>
 
-    <h1 class="m-5">Добавить категорию</h1>
+    <h2 class="m-5 mb-0">Добавить категорию</h2>
     <form action="{{ route('addCategory') }}" method="post">
         @csrf
         <div class="card p-2 m-5">
@@ -53,7 +53,7 @@
         </div>
     </form>
 
-    <h1 class="m-5">Удалить категорию</h1>
+    <h2 class="m-5 mb-0">Удалить категорию</h2>
     <form action="{{ route('dellCategory') }}" method="post">
         @csrf
         @method('DELETE')
@@ -70,7 +70,7 @@
         </div>
     </form>
 
-    <h1 class="m-5">Добавить статью</h1>
+    <h2 class="m-5 mb-0">Добавить статью</h2>
     <form action="{{ route('addArticles') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="card p-2 m-5" >
@@ -90,7 +90,7 @@
         </div>
     </form>
 
-    <h1 class="m-5">Удалить статью</h1>
+    <h2 class="m-5 mb-0">Удалить статью</h2>
     <form action="{{ route('dellArticles') }}" method="post">
         @csrf
         @method('DELETE')
@@ -107,7 +107,7 @@
         </div>
     </form>
 
-    {{-- <h1 class="m-5">Заказы:</h1>
+    {{-- <h2 class="m-5">Заказы:</h2>
     <select class="form-select m-5" aria-label="Default select example" style="width: 250px;">
         <option value="1">Новый</option>
         <option value="2">Подтвержденый</option>
