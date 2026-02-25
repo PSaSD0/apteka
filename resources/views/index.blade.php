@@ -38,6 +38,7 @@
                         <div class="col-md-8">
                             <div class="card-body">
                                 <p class="card-title fw-bold">{{ $a->product_name }}</p>
+                                <p class="card-text">{{ $a->category_name }}</p>
                                 <p class="card-text">{{ $a->price }} ₽</p>
                                 <a href="{{ route('product', $a->id_product) }}" class="btn btn-outline-primary btn-sm">Подробнее</a>
                                 <a href="{{ route('basket', $a->id_product) }}" class="btn btn-success btn-sm">В корзину</a>
@@ -73,6 +74,7 @@
                         <div class="col-md-8">
                             <div class="card-body">
                                 <p class="card-title fw-bold">{{ $a->product_name }}</p>
+                                <p class="card-text">{{ $a->category_name }}</p>
                                 <p class="card-text">{{ $a->price }} ₽</p>
                                 <a href="{{ route('product', $a->id_product) }}" class="btn btn-outline-primary btn-sm">Подробнее</a>
                                 <a href="{{ route('basket', $a->id_product) }}" class="btn btn-success btn-sm">В корзину</a>
@@ -108,6 +110,7 @@
                         <div class="col-md-8">
                             <div class="card-body">
                                 <p class="card-title fw-bold">{{ $a->product_name }}</p>
+                                <p class="card-text">{{ $a->category_name }}</p>
                                 <p class="card-text">{{ $a->price }} ₽</p>
                                 <a href="{{ route('product', $a->id_product) }}" class="btn btn-outline-primary btn-sm">Подробнее</a>
                                 <a href="{{ route('basket', $a->id_product) }}" class="btn btn-success btn-sm">В корзину</a>
@@ -143,6 +146,7 @@
                         <div class="col-md-8">
                             <div class="card-body">
                                 <p class="card-title fw-bold">{{ $a->product_name }}</p>
+                                <p class="card-text">{{ $a->category_name }}</p>
                                 <p class="card-text">{{ $a->price }} ₽</p>
                                 <a href="{{ route('product', $a->id_product) }}" class="btn btn-outline-primary btn-sm">Подробнее</a>
                                 <a href="{{ route('basket', $a->id_product) }}" class="btn btn-success btn-sm">В корзину</a>

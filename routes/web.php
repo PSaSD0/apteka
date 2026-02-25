@@ -37,6 +37,8 @@ Route::delete('/dellCategory', [App\Http\Controllers\WebController::class, 'dell
 Route::post('/addProduct', [App\Http\Controllers\WebController::class, 'addProduct'])->name('addProduct')->middleware('auth')->middleware('check.admin');
 Route::delete('/dellProduct', [App\Http\Controllers\WebController::class, 'dellProduct'])->name('dellProduct')->middleware('auth')->middleware('check.admin');
 
-
 Route::post('/addArticles', [App\Http\Controllers\WebController::class, 'addArticles'])->name('addArticles')->middleware('auth')->middleware('check.admin');
 Route::delete('/dellArticles', [App\Http\Controllers\WebController::class, 'dellArticles'])->name('dellArticles')->middleware('auth')->middleware('check.admin');
+
+Route::post('/admin/order/status/{id}', [App\Http\Controllers\WebController::class, 'updateStatus'])->name('admin.order.status')->middleware('auth')->middleware('check.admin');
+Route::delete('/dellOrder', [App\Http\Controllers\WebController::class, 'dellOrder'])->name('dellOrder')->middleware('auth')->middleware('check.admin');

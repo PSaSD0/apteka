@@ -10,7 +10,8 @@
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <p class="card-title">{{ $basket->product_name }}</p>
+                        <p class="card-title fw-bold">{{ $basket->product_name }}</p>
+                        <p class="card-text">{{ $basket->category_name }}</p>
                         <h4 class="card-text d-flex justify-content-end me-3">{{ $basket->price }} ₽</h4>
                     </div>
                 </div>

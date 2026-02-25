@@ -3,26 +3,26 @@
 @section('content')
     <h2 class="m-5 mb-0">Каталог</h2>
     <form action="{{ route('catalog') }}" method="get">
-    <div class="d-flex justify-content-start">
-        <select class="form-select m-5 ms-0" style="width: 250px;" name="sort">
-            <option value="">Сортировка</option>
-            <option value="producer" {{ request('sort') == 'producer' ? 'selected' : '' }}>По производителю</option>
-            <option value="substance" {{ request('sort') == 'substance' ? 'selected' : '' }}>По действующему веществу</option>
-            <option value="price" {{ request('sort') == 'price' ? 'selected' : '' }}>По цене</option>
-        </select>
+        <div class="d-flex justify-content-start">
+            <select class="form-select m-5 ms-0" style="width: 250px;" name="sort">
+                <option value="">Сортировка</option>
+                <option value="producer" {{ request('sort') == 'producer' ? 'selected' : '' }}>По производителю</option>
+                <option value="substance" {{ request('sort') == 'substance' ? 'selected' : '' }}>По действующему веществу</option>
+                <option value="price" {{ request('sort') == 'price' ? 'selected' : '' }}>По цене</option>
+            </select>
 
-        <select class="form-select m-5" style="width: 250px;" name="category">
-            <option value="all" {{ request('category') == 'all' ? 'selected' : '' }}>Все категории</option>
-            @foreach ($categories as $a)
-                <option value="{{ $a->id_category }}" {{ request('category') == $a->id_category ? 'selected' : '' }}>
-                    {{ $a->category_name }}
-                </option>
-            @endforeach
-        </select>
+            <select class="form-select m-5" style="width: 250px;" name="category">
+                <option value="all" {{ request('category') == 'all' ? 'selected' : '' }}>Все категории</option>
+                @foreach ($categories as $a)
+                    <option value="{{ $a->id_category }}" {{ request('category') == $a->id_category ? 'selected' : '' }}>
+                        {{ $a->category_name }}
+                    </option>
+                @endforeach
+            </select>
 
-        <button type="submit" class="btn btn-primary m-5">Фильтр</button>
-    </div>
-</form>
+            <button type="submit" class="btn btn-primary m-5">Отфильтровать</button>
+        </div>
+    </form>
 
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
@@ -34,6 +34,7 @@
                         </div>
                         <div class="card-body ">
                             <h5 class="card-title">{{ $a->product_name }}</h5>
+                            <p class="card-text">{{ $a->category_name }}</p>
                             <p class="card-text">{{ $a->price }} ₽</p>
                             <a href="{{ route('product', $a->id_product) }}" class="btn btn-outline-primary btn-sm">Подробнее</a>
                             <a href="{{ route('basket',  $a->id_product) }}" class="btn btn-success btn-sm">В корзину</a>

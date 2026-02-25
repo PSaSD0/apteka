@@ -9,15 +9,15 @@
                 <label class="form-label" for="image">Добавить фото</label>
                 <input class="form-control" type="file" id="image" name="image" required accept="image/*">
 
+                <label class="form-label mt-3" for="nameProduct">Название товара</label>
+                <input class="form-control" type="text" id="nameProduct" name="nameProduct" required>
+
                 <label class="form-label mt-3" for="id_category">Выбор категории</label>
                 <select class="form-select" name="id_category" id="id_category">
                     @foreach ($categories as $a)
                         <option value="{{ $a->id_category }}">{{ $a->category_name }}</option>
                     @endforeach
                 </select>
-
-                <label class="form-label mt-3" for="nameProduct">Название товара</label>
-                <input class="form-control" type="text" id="nameProduct" name="nameProduct" required>
 
                 <label class="form-label mt-3" for="descriptionProduct">Описание товара</label>
                 <textarea class="form-control" rows="5" type="text" id="descriptionProduct" name="descriptionProduct" required></textarea>
@@ -109,61 +109,59 @@
         </div>
     </form>
 
-    {{-- <h2 class="m-5">Заказы:</h2>
-    <select class="form-select m-5" aria-label="Default select example" style="width: 250px;">
-        <option value="1">Новый</option>
-        <option value="2">Подтвержденый</option>
-        <option value="3">Отмененный</option>
-    </select>
+<div class="container mt-4">
+    <h2 class="m-4">Управление заказами</h2>
 
-        <div class="container m-5">
-        <div class="row">
+    @if(session('message'))
+        <div class="alert alert-success m-4">{{ session('message') }}</div>
+    @endif
+
+    <div class="card m-4">
+        <div class="card-body">
             <table class="table">
                 <thead>
                     <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">ФИО</th>
-                    <th scope="col">Статус</th>
-                    <th scope="col">Количество товаров</th>
-                    <th scope="col">Товары</th>
-                    <th scope="col">Время заказа</th>
+                        <th>ID</th>
+                        <th>Пользователь</th>
+                        <th>Сумма</th>
+                        <th>Статус</th>
+                        <th>Дата</th>
+                        <th>Действие</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($order as $a)
                     <tr>
-                    <th scope="row">1</th>
-                    <td>Дмитрий Дима Дмитриевич</td>
-                    <td>Новый</td>
-                    <td>1 товар</td>
-                    <td>принтер</td>
-                    <td>20:15:22</td>
-                    <td><a href="#" class="btn btn-primary">Принять</a></td>
-                    <td><a href="#" class="btn btn-danger">Удалить</a></td>
-
+                        <td>#{{ $a->id_order }}</td>
+                        <td>{{ $a->name }} {{ $a->surname }}</td>
+                        <td>{{ $a->order_sum }} ₽</td>
+                        <td>
+                            <form action="{{ route('admin.order.status', $a->id_order) }}" method="post">
+                                @csrf
+                                <select name="status" class="form-control" onchange="this.form.submit()">
+                                    @foreach($status as $b)
+                                        <option value="{{ $b->id_status }}" {{ $a->id_status == $b->id_status ? 'selected' : '' }}>
+                                            {{ $b->status_name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </form>
+                        </td>
+                        <td>{{ $a->created_at }}</td>
+                        <td>
+                            <form action="{{ route('dellOrder') }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <input type="hidden" name="id_order" value="{{ $a->id_order }}">
+                                <button type="submit" class="btn btn-danger mt-3">Удалить</button>
+                                <p>{{ session('messageDellOrder') }}</p>
+                            </form>
+                        </td>
                     </tr>
-                    <tr>
-                    <th scope="row">2</th>
-                    <td>Алексей Александр Александрович</td>
-                    <td>Подтвержденный</td>
-                    <td>1 товар</td>
-                    <td>принтер</td>
-                    <td>04:20:00</td>
-                    <td><a href="#" class="btn btn-primary">Принять</a></td>
-                    <td><a href="#" class="btn btn-danger">Удалить</a></td>
-
-                    </tr>
-                    <tr>
-                    <th scope="row">3</th>
-                    <td>Андрей Алекчандрович Андреев</td>
-                    <td>Новый</td>
-                    <td>1 товар</td>
-                    <td>принтер</td>
-                    <td>17:10:52</td>
-                    <td><a href="#" class="btn btn-primary">Принять</a></td>
-                    <td><a href="#" class="btn btn-danger">Удалить</a></td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
-    </div> --}}
+    </div>
+</div>
 @endsection
