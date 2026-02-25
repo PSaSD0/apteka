@@ -7,11 +7,17 @@
             @foreach($array as $a)
                 @if($loop->index==0)
                     <div class="carousel-item active">
-                        <img src="{{ asset($a->image) }}" class="d-block w-10 mx-auto p-2" style="max-height: 300px; width: auto; max-width: 100%; object-fit: contain;">
+                        <a class="text-decoration-none" href="{{ route('product', $a->id_product) }}">
+                            <img src="{{ asset($a->image) }}" class="d-block w-10 mx-auto p-2" style="max-height: 300px; width: auto; max-width: 100%; object-fit: contain;">
+                            <p class="text-dark">{{ $a->product_name }}</p>
+                        </a>
                     </div>
                 @else
                     <div class="carousel-item">
-                        <img src="{{ asset($a->image) }}" class="d-block w-10 mx-auto p-2" style="max-height: 300px; width: auto; max-width: 100%; object-fit: contain;">
+                        <a class="text-decoration-none" href="{{ route('product', $a->id_product) }}">
+                            <img src="{{ asset($a->image) }}" class="d-block w-10 mx-auto p-2" style="max-height: 300px; width: auto; max-width: 100%; object-fit: contain;">
+                            <p class="text-dark">{{ $a->product_name }}</p>
+                        </a>
                     </div>
                 @endif
             @endforeach

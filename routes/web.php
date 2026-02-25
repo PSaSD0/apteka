@@ -27,6 +27,8 @@ Route::get('/basket/{id}', [App\Http\Controllers\WebController::class, 'basket']
 Route::post('/order', [App\Http\Controllers\WebController::class, 'order'])->name('order')->middleware('auth');
 Route::get('/profile', [App\Http\Controllers\WebController::class, 'profile'])->name('profile')->middleware('auth');
 Route::get('/admin', [App\Http\Controllers\WebController::class, 'admin'])->name('admin')->middleware('auth')->middleware('check.admin');
+Route::get('/search', [App\Http\Controllers\SearchController::class, 'search'])->name('search');
+
 
 Route::get('/editProductView/{id}', [App\Http\Controllers\WebController::class, 'editProductView'])->name('editProductView')->middleware('auth')->middleware('check.admin');
 Route::post('/editProduct/{id}', [App\Http\Controllers\WebController::class, 'editProduct'])->name('editProduct')->middleware('auth')->middleware('check.admin');

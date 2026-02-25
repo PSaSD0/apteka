@@ -38,9 +38,9 @@
 
                     {{-- Center Side Of Navbar --}}
                     <ul class="navbar-nav ms-auto">
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Search"/>
-                            <button class="btn btn-outline-success" type="submit">Поиск</button>
+                        <form class="d-flex" action="{{ route('search') }}" method="get">
+                            <input class="form-control me-2" type="search" name="search" placeholder="Поиск...">
+                            <button class="btn btn-outline-success" type="submit">Найти</button>
                         </form>
                     </ul>
 

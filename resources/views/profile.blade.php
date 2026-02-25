@@ -22,13 +22,11 @@
                     <p>Сумма: {{ $a->order_sum }} ₽</p>
                     <p>Статус:
                         @if($a->id_status == 1)
-                            <span class="text-warning">Новый</span>
+                            <span class="">Новый</span>
                         @elseif($a->id_status == 2)
-                            <span class="text-info">В обработке</span>
+                            <span class="">В обработке</span>
                         @elseif($a->id_status == 3)
-                            <span class="text-success">Выполнен</span>
-                        @else
-                            <span class="text-danger">Отменен</span>
+                            <span class="">Выполнен</span>
                         @endif
                     </p>
                 </div>
