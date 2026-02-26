@@ -216,7 +216,7 @@
         @endforeach
     </div>
 
-    <div class="d-flex justify-content-between mt-4">
+    <div class="d-flex justify-content-between mt-5">
         <h2>Статьи</h2>
         <a href="{{ route("articles") }}" class="btn btn-outline-primary mb-3">Все статьи</a>
     </div>

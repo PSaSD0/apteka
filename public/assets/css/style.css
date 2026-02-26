@@ -4,6 +4,7 @@ body{
 
 .card {
     transition: transform .2s;
+    border-radius: 20px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
@@ -18,4 +19,16 @@ body{
 
 .card:hover img{
     transform: scale(1.10);
+}
+
+.carousel-inner{
+    border-radius: 20px;
+}
+
+.btn{
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.form-select{
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }

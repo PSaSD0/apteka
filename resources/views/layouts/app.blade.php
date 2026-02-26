@@ -19,6 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('assets/css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('assets/css/test.css') }}" rel="stylesheet"> --}}
 </head>
 <body>
     <div id="app">
