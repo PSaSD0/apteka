@@ -1,0 +1,12 @@
+[build]
+  command = "composer install --no-interaction --prefer-dist --optimize-autoloader && npm install && npm run production"
+  publish = "public"
+
+[build.environment]
+  PHP_VERSION = "8.2"
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.php"
+  status = 200
