@@ -49,7 +49,7 @@
                 <input type="text" class="form-control" id="nameCategory" name="nameCategory" required>
             </div>
             <div class="ms-3 mt-0">
-                <button type="submit" class="btn btn-success">Добавить</button>
+                <button type="submit" class="btn btn-primary">Добавить</button>
             </div>
             <p>{{ session('messageAddCategory') }}</p>
         </div>

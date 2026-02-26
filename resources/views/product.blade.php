@@ -8,16 +8,16 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h4 class="card-title">{{ $product->product_name }}</h4>
-                    <h5 class="card-title">{{ $product->category_name }}</h5>
+                    <h5 class="card-title">{{ $product->product_name }}</h5>
+                    <h6 class="card-title">{{ $product->category_name }}</h6>
                     <p class="card-text">Производитель: {{ $product->product_producer }}</p>
                     <p class="card-text">Действующее вещество: {{ $product->product_active_substance }}</p>
                     <p class="card-text">Срок годности: {{ $product->product_expiration_date }}</p>
                     <p class="card-text">Цена: {{ $product->price }} ₽</p>
-                    <a href="{{ route('basket', $product->id_product) }}" class="btn btn-success btn-sm">В корзину</a><br>
+                    <a href="{{ route('basket', $product->id_product) }}" class="btn btn-success btn-sm mb-2">В корзину</a><br>
                     @auth
                         @if(Auth::user()->id_role == 2)
-                            <a href="{{ route('editProductView',['id'=>$product->id_product]) }}" class="btn btn-outline-primary btn-sm">Редактировать товар</a>
+                            <a href="{{ route('editProductView',['id'=>$product->id_product]) }}" class="btn btn-outline-primary btn-sm mb-2">Редактировать товар</a>
 
                             <form action="{{ route('dellProduct') }}" method="post">
                                 @csrf
@@ -43,14 +43,14 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
-                                    <p class="card-title fw-bold">{{ $a->product_name }}</p>
+                                    <h6 class="card-title">{{ $a->product_name }}</h6>
                                     <p class="card-text">{{ $a->category_name }}</p>
                                     <p class="card-text">{{ $a->price }} ₽</p>
-                                    <a href="{{ route('product', $a->id_product) }}" class="btn btn-outline-primary btn-sm">Подробнее</a>
-                                    <a href="{{ route('basket', $a->id_product) }}" class="btn btn-success btn-sm">В корзину</a>
+                                    <a href="{{ route('product', $a->id_product) }}" class="btn btn-outline-primary btn-sm me-2 mb-2">Подробнее</a>
+                                    <a href="{{ route('basket', $a->id_product) }}" class="btn btn-success btn-sm mb-2">В корзину</a>
                                     @auth
                                         @if(Auth::user()->id_role == 2)
-                                            <a href="{{ route('editProductView',['id'=>$a->id_product]) }}" class="btn btn-outline-primary btn-sm">Редактировать товар</a>
+                                            <a href="{{ route('editProductView',['id'=>$a->id_product]) }}" class="btn btn-outline-primary btn-sm mb-2">Редактировать товар</a>
 
                                             <form action="{{ route('dellProduct') }}" method="post">
                                                 @csrf

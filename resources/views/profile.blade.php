@@ -18,7 +18,7 @@
         @foreach($array as $a)
             <div class="card mb-3">
                 <div class="card-body">
-                    <p>Заказ #{{ $a->id_order }} от {{ $a->created_at }}</p>
+                    <p>Заказ: {{ $a->id_order }} от {{ $a->created_at }}</p>
                     <p>Сумма: {{ $a->order_sum }} ₽</p>
                     <p>Статус:
                         @if($a->id_status == 1)

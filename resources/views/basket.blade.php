@@ -6,13 +6,13 @@
         <div class="card mb-3 m-5" style="width: 70em; height: 25em;">
             <div class="row g-0">
                 <div class="col-md-4">
-                    <img src="{{ asset($basket->image) }}" class="img-fluid m-2" style="max-height: 100%; width: auto; max-width: 100%; object-fit: contain;" alt="...">
+                    <img src="{{ asset($basket->image) }}" class="img-fluid m-4" style="max-height: 70%; width: auto; max-width: 100%; object-fit: contain;" alt="...">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
-                        <p class="card-title fw-bold">{{ $basket->product_name }}</p>
+                        <h6 class="card-title">{{ $basket->product_name }}</h6>
                         <p class="card-text">{{ $basket->category_name }}</p>
-                        <h4 class="card-text d-flex justify-content-end me-3">{{ $basket->price }} ₽</h4>
+                        <h5 class="card-text d-flex justify-content-end me-3">{{ $basket->price }} ₽</h5>
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                         <button class="btn btn-link text-dark text-decoration-none px-3" style="font-size: 20px;" onclick="document.getElementById('qty').stepUp()">+</button>
                     </div>
 
-                    <p class="card-text">ФИО получателя</p>
+                    <p class="card-text mt-3">ФИО получателя</p>
                     <input type="text" name="name" class="form-control mb-3" required>
 
                     <p class="card-text">Адрес доставки</p>

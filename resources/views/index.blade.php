@@ -1,36 +1,76 @@
 @extends('layouts.app')
 
 @section('content')
-    <h2 class="m-5">Новинки</h2>
-    <div id="carouselExampleAutoplaying" class="carousel carousel-dark slide w-50 p-3" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            @foreach($array as $a)
-                @if($loop->index==0)
-                    <div class="carousel-item active">
-                        <a class="text-decoration-none" href="{{ route('product', $a->id_product) }}">
-                            <img src="{{ asset($a->image) }}" class="d-block w-10 mx-auto p-2" style="max-height: 300px; width: auto; max-width: 100%; object-fit: contain;">
-                            <p class="text-dark">{{ $a->product_name }}</p>
-                        </a>
-                    </div>
-                @else
-                    <div class="carousel-item">
-                        <a class="text-decoration-none" href="{{ route('product', $a->id_product) }}">
-                            <img src="{{ asset($a->image) }}" class="d-block w-10 mx-auto p-2" style="max-height: 300px; width: auto; max-width: 100%; object-fit: contain;">
-                            <p class="text-dark">{{ $a->product_name }}</p>
-                        </a>
-                    </div>
-                @endif
-            @endforeach
+    <h2 class="m-5 mb-3">Новинки</h2>
+        <div id="carouselExampleAutoplaying" class="carousel carousel-dark" data-bs-ride="carousel">
+            <div class="carousel-inner rounded-5 shadow">
+                @foreach($array as $a)
+                    @if($loop->index==0)
+                        <div class="carousel-item active">
+                            <div class="row p-5 align-items-center">
+                                <div class="col-md-5 text-center">
+                                    <img src="{{ asset($a->image) }}" class="img-fluid rounded-3 ms-5" style="max-height: 100%; width: auto; max-width: 100%; object-fit: contain;">
+                                </div>
+                                <div class="col-md-7">
+                                    <h6 class="text-primary text-dark ms-5">{{ $a->product_name }}</h6>
+                                    <p class="card-text text-dark ms-5">{{ $a->category_name }}</p>
+                                    <p class="card-text text-dark ms-5">{{ $a->price }} ₽</p>
+                                    <a href="{{ route('product', $a->id_product) }}" class="btn btn-outline-primary btn-sm me-2 mb-2 ms-5">Подробнее</a>
+                                    <a href="{{ route('basket', $a->id_product) }}" class="btn btn-success btn-sm mb-2">В корзину</a><br>
+                                    @auth
+                                        @if(Auth::user()->id_role == 2)
+                                            <a href="{{ route('editProductView',['id'=>$a->id_product]) }}" class="btn btn-outline-primary btn-sm mb-2 ms-5">Редактировать товар</a>
+
+                                            <form action="{{ route('dellProduct') }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <input type="hidden" name="id_product" value="{{ $a->id_product }}">
+                                                <button type="submit" class="btn btn-danger btn-sm ms-5">Удалить</button>
+                                            </form>
+                                        @endif
+                                    @endauth
+                                </div>
+                            </div>
+                        </div>
+                    @else
+                        <div class="carousel-item">
+                            <div class="row p-5 align-items-center">
+                                <div class="col-md-5 text-center">
+                                    <img src="{{ asset($a->image) }}" class="img-fluid rounded-3 ms-5" style="max-height: 100%; width: auto; max-width: 100%; object-fit: contain;">
+                                </div>
+                                <div class="col-md-7">
+                                    <h6 class="text-primary text-dark ms-5">{{ $a->product_name }}</h6>
+                                    <p class="card-text text-dark ms-5">{{ $a->category_name }}</p>
+                                    <p class="card-text text-dark ms-5">{{ $a->price }} ₽</p>
+                                    <a href="{{ route('product', $a->id_product) }}" class="btn btn-outline-primary btn-sm me-2 mb-2 ms-5">Подробнее</a>
+                                    <a href="{{ route('basket', $a->id_product) }}" class="btn btn-success btn-sm mb-2">В корзину</a><br>
+                                    @auth
+                                        @if(Auth::user()->id_role == 2)
+                                            <a href="{{ route('editProductView',['id'=>$a->id_product]) }}" class="btn btn-outline-primary btn-sm mb-2 ms-5">Редактировать товар</a>
+
+                                            <form action="{{ route('dellProduct') }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <input type="hidden" name="id_product" value="{{ $a->id_product }}">
+                                                <button type="submit" class="btn btn-danger btn-sm ms-5">Удалить</button>
+                                            </form>
+                                        @endif
+                                    @endauth
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
+            </div>
+            <button class="carousel-control-prev"  type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
-        <button class="carousel-control-prev"  type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
 
     <h2 class="mt-4">Популярные товары</h2>
     <div class="row row-cols-1 row-cols-md-3">
@@ -43,14 +83,14 @@
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <p class="card-title fw-bold">{{ $a->product_name }}</p>
+                                <h6 class="card-title">{{ $a->product_name }}</h6>
                                 <p class="card-text">{{ $a->category_name }}</p>
                                 <p class="card-text">{{ $a->price }} ₽</p>
-                                <a href="{{ route('product', $a->id_product) }}" class="btn btn-outline-primary btn-sm">Подробнее</a>
-                                <a href="{{ route('basket', $a->id_product) }}" class="btn btn-success btn-sm">В корзину</a>
+                                <a href="{{ route('product', $a->id_product) }}" class="btn btn-outline-primary btn-sm me-2 mb-2">Подробнее</a>
+                                <a href="{{ route('basket', $a->id_product) }}" class="btn btn-success btn-sm mb-2">В корзину</a>
                                 @auth
                                     @if(Auth::user()->id_role == 2)
-                                        <a href="{{ route('editProductView',['id'=>$a->id_product]) }}" class="btn btn-outline-primary btn-sm">Редактировать товар</a>
+                                        <a href="{{ route('editProductView',['id'=>$a->id_product]) }}" class="btn btn-outline-primary btn-sm mb-2">Редактировать товар</a>
 
                                         <form action="{{ route('dellProduct') }}" method="post">
                                             @csrf
@@ -79,14 +119,14 @@
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <p class="card-title fw-bold">{{ $a->product_name }}</p>
+                                <h6 class="card-title">{{ $a->product_name }}</h6>
                                 <p class="card-text">{{ $a->category_name }}</p>
                                 <p class="card-text">{{ $a->price }} ₽</p>
-                                <a href="{{ route('product', $a->id_product) }}" class="btn btn-outline-primary btn-sm">Подробнее</a>
-                                <a href="{{ route('basket', $a->id_product) }}" class="btn btn-success btn-sm">В корзину</a>
+                                <a href="{{ route('product', $a->id_product) }}" class="btn btn-outline-primary btn-sm me-2 mb-2">Подробнее</a>
+                                <a href="{{ route('basket', $a->id_product) }}" class="btn btn-success btn-sm mb-2">В корзину</a>
                                 @auth
                                     @if(Auth::user()->id_role == 2)
-                                        <a href="{{ route('editProductView',['id'=>$a->id_product]) }}" class="btn btn-outline-primary btn-sm">Редактировать товар</a>
+                                        <a href="{{ route('editProductView',['id'=>$a->id_product]) }}" class="btn btn-outline-primary btn-sm mb-2">Редактировать товар</a>
 
                                         <form action="{{ route('dellProduct') }}" method="post">
                                             @csrf
@@ -115,14 +155,14 @@
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <p class="card-title fw-bold">{{ $a->product_name }}</p>
+                                <h6 class="card-title">{{ $a->product_name }}</h6>
                                 <p class="card-text">{{ $a->category_name }}</p>
                                 <p class="card-text">{{ $a->price }} ₽</p>
-                                <a href="{{ route('product', $a->id_product) }}" class="btn btn-outline-primary btn-sm">Подробнее</a>
-                                <a href="{{ route('basket', $a->id_product) }}" class="btn btn-success btn-sm">В корзину</a>
+                                <a href="{{ route('product', $a->id_product) }}" class="btn btn-outline-primary btn-sm me-2 mb-2">Подробнее</a>
+                                <a href="{{ route('basket', $a->id_product) }}" class="btn btn-success btn-sm mb-2">В корзину</a>
                                 @auth
                                     @if(Auth::user()->id_role == 2)
-                                        <a href="{{ route('editProductView',['id'=>$a->id_product]) }}" class="btn btn-outline-primary btn-sm">Редактировать товар</a>
+                                        <a href="{{ route('editProductView',['id'=>$a->id_product]) }}" class="btn btn-outline-primary btn-sm mb-2">Редактировать товар</a>
 
                                         <form action="{{ route('dellProduct') }}" method="post">
                                             @csrf
@@ -151,14 +191,14 @@
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <p class="card-title fw-bold">{{ $a->product_name }}</p>
+                                <h6 class="card-title">{{ $a->product_name }}</h6>
                                 <p class="card-text">{{ $a->category_name }}</p>
                                 <p class="card-text">{{ $a->price }} ₽</p>
-                                <a href="{{ route('product', $a->id_product) }}" class="btn btn-outline-primary btn-sm">Подробнее</a>
-                                <a href="{{ route('basket', $a->id_product) }}" class="btn btn-success btn-sm">В корзину</a>
+                                <a href="{{ route('product', $a->id_product) }}" class="btn btn-outline-primary btn-sm me-2 mb-2">Подробнее</a>
+                                <a href="{{ route('basket', $a->id_product) }}" class="btn btn-success btn-sm mb-2">В корзину</a>
                                 @auth
                                     @if(Auth::user()->id_role == 2)
-                                        <a href="{{ route('editProductView',['id'=>$a->id_product]) }}" class="btn btn-outline-primary btn-sm">Редактировать товар</a>
+                                        <a href="{{ route('editProductView',['id'=>$a->id_product]) }}" class="btn btn-outline-primary btn-sm mb-2">Редактировать товар</a>
 
                                         <form action="{{ route('dellProduct') }}" method="post">
                                             @csrf
@@ -176,11 +216,10 @@
         @endforeach
     </div>
 
-    <div class="d-flex justify-content-center mt-4">
-        <a href="{{ route("catalog") }}" class="btn btn-success">Все товары</a>
+    <div class="d-flex justify-content-between mt-4">
+        <h2>Статьи</h2>
+        <a href="{{ route("articles") }}" class="btn btn-outline-primary mb-3">Все статьи</a>
     </div>
-
-    <h2>Статьи</h2>
     <div class="row row-cols-1 row-cols-md-3">
         @foreach ($articles as $a)
             <div class="col">
@@ -192,7 +231,7 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
-                                    <p class="card-title fw-bold text-dark">{{ $a->articles_name }}</p>
+                                    <h6 class="card-title text-dark">{{ $a->articles_name }}</h6>
                                     <p class="card-text text-dark"><small class="text-body-secondary">{{ $a->created_at }}</small></p>
                                 </div>
                             </div>
@@ -201,9 +240,5 @@
                 </a>
             </div>
         @endforeach
-    </div>
-
-    <div class="d-flex justify-content-center mt-4">
-        <a href="{{ route("articles") }}" class="btn btn-success">Все статьи</a>
     </div>
 @endsection
